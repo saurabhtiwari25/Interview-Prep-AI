@@ -1,0 +1,18 @@
+# Environment variables (contains secrets)
+.env
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+backend/target/
+frontend/node_modules/
+frontend/dist/
+
+# Uploads
+uploads/
