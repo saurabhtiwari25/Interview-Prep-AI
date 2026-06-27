@@ -7,9 +7,6 @@ const LoginPage = () => {
   const { user, login } = useAuth();
   const navigate = useNavigate();
 
-  // If already logged in, redirect to home
-  if (user) return <Navigate to="/" replace />;
-
   const handleLogin = async (prevState, formData) => {
     const email = formData.get('email');
     const password = formData.get('password');
@@ -23,6 +20,9 @@ const LoginPage = () => {
   };
 
   const [state, formAction, isPending] = useActionState(handleLogin, { error: null });
+
+  // If already logged in, redirect to home
+  if (user) return <Navigate to="/" replace />;
 
   return (
     <div className="card fade-in" style={{ maxWidth: '400px', margin: '40px auto', padding: '40px' }}>
