@@ -1,11 +1,11 @@
 import React, { useActionState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { UserPlus } from 'lucide-react';
 
 const RegisterPage = () => {
-  const { register } = useAuth();
-  const navigate = useNavigate();
+  const { user, register } = useAuth();
+
 
   const handleRegister = async (prevState, formData) => {
     const data = {
@@ -19,7 +19,6 @@ const RegisterPage = () => {
 
     try {
       await register(data);
-      navigate('/');
       return { error: null };
     } catch (err) {
       return { error: err.message || 'Failed to register' };
@@ -27,6 +26,9 @@ const RegisterPage = () => {
   };
 
   const [state, formAction, isPending] = useActionState(handleRegister, { error: null });
+
+  // If already logged in (after registration), redirect to home
+  if (user) return <Navigate to="/" replace />;
 
   return (
     <div className="card fade-in" style={{ maxWidth: '500px', margin: '40px auto', padding: '40px' }}>

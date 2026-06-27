@@ -1,18 +1,17 @@
 import React, { useActionState } from 'react';
-import { useNavigate, Link, Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogIn } from 'lucide-react';
 
 const LoginPage = () => {
   const { user, login } = useAuth();
-  const navigate = useNavigate();
+
 
   const handleLogin = async (prevState, formData) => {
     const email = formData.get('email');
     const password = formData.get('password');
     try {
       await login(email, password);
-      navigate('/');
       return { error: null };
     } catch (err) {
       return { error: err.message || 'Failed to login' };
