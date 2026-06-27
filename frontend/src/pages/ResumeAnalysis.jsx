@@ -112,7 +112,19 @@ const ResumeParserPage = () => {
               <ul style={{ listStyleType: 'none', padding: 0 }}>
                 {parsedData.projects && parsedData.projects.map((proj, i) => (
                   <li key={i} className="project-card">
-                    {proj}
+                    {typeof proj === 'string' ? proj : (
+                      <>
+                        <strong>{proj.name}</strong>
+                        {proj.techStack && (
+                          <div className="tags" style={{ marginTop: '8px', marginBottom: '6px' }}>
+                            {(Array.isArray(proj.techStack) ? proj.techStack : [proj.techStack]).map((tech, j) => (
+                              <span key={j} className="tag">{tech}</span>
+                            ))}
+                          </div>
+                        )}
+                        {proj.description && <p style={{ margin: '4px 0 0', opacity: 0.8, fontSize: '0.95em' }}>{proj.description}</p>}
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>
