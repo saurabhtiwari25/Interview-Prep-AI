@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/resume")
+@RequestMapping("/resume")
 @CrossOrigin(origins = "*")
 @Slf4j
 @RequiredArgsConstructor
