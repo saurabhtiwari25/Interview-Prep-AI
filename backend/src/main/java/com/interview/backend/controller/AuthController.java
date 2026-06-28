@@ -18,7 +18,7 @@ import com.interview.backend.dto.AuthRequest;
 import com.interview.backend.dto.AuthResponse;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @CrossOrigin(origins = "*")
 @Slf4j
 @RequiredArgsConstructor
